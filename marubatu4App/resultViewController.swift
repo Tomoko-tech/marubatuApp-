@@ -14,31 +14,20 @@ class resultViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    //var questions:[[String:Any]] = []
     
-//    //格納
-//    if UserDefaults.standard.object(forKey: "questions") != nil {
-//        questions = UserDefaults.standard.object(forKey: "questions") as! [[String : Any]]
-//    }
-//    //アペンド
-//    questions.append(["question":questionField.text!,"answer":marubatuAnswer])
-//    
-//    //保存
-//    UserDefaults.standard.set(questions, forKey: "questions")
+    //受け皿の変数を用意
+    var recieveResult = 0
     
-    
-    var resultArray:[Int] = []
-    
-    
-    
+    //正答数表示ボタン
     @IBAction func resultShowButton(_ sender: Any) {
         
-        
+        //受け皿にUserDefaultsを格納
         if UserDefaults.standard.object(forKey: "result") != nil {
-            resultArray = UserDefaults.standard.object(forKey: "result") as! [Int]
-            print(resultArray.count)
+            recieveResult = UserDefaults.standard.object(forKey: "result") as! Int
+            print(recieveResult)
         }
-        resultLabel.text! = String(resultArray.count)
+        //ラベルに表示 Int型の受け皿の変数をString型に変えて
+        resultLabel.text! = String(recieveResult)
         
     }
     

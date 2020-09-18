@@ -67,32 +67,29 @@ class ViewController: UIViewController {
     
 
     var trueNumber = 0
-    var array = [Int]()
+    //var array = [Int]()
     
     func checkAnswer(userAnswer:Bool) {
         let question = questions[currentQuestionNum]
         
         if let ans = question["answer"] as? Bool {
             
+            //正解と一致したら、trueNumber(正解数)に＋1する
             if userAnswer == ans {
                 currentQuestionNum += 1
                 showAlert(message: "正解")
-            } else {
-                showAlert(message: "不正解") //不正解
-            }
                 trueNumber += 1
                 print(trueNumber)
-            
-            
-//            if UserDefaults.standard.object(forKey: "result") != nil {
-//                array = UserDefaults.standard.object(forKey: "result") as! [Int]
-//            }
-            
-            array.append(trueNumber)
-            print(array)
-            //アプリの中に一時的に保存
-            UserDefaults.standard.set(array, forKey: "result")
-
+            } else {
+                currentQuestionNum += 1
+                showAlert(message: "不正解") //不正解
+            }
+                
+                
+        
+            //UserDefaultsにtrueNumberを保存 アプリの中に一時的に保存
+            UserDefaults.standard.set(trueNumber, forKey: "result")
+            print(trueNumber)
             
         } else {
             print("答えがありません")
